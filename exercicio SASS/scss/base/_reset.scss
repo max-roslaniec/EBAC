@@ -1,0 +1,16 @@
+@use 'variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: variables.$fonte-principal;
+}
+
+body {
+  background-color: variables.$cor-fundo;
+}
+
+li {
+  list-style: none;
+}
