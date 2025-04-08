@@ -21,11 +21,26 @@ function comprimeJavaScript() {
         .pipe(gulp.dest('./build/scripts'));
 }
 
-// Comprime imagens com import dinâmico de gulp-imagemin (ESM)
+// Comprime imagens com import dinâmico
 async function comprimeImagens() {
     const imagemin = (await import('gulp-imagemin')).default;
-    return gulp.src('./source/images/*')
-        .pipe(imagemin())
+    const imageminGifsicle = (await import('imagemin-gifsicle')).default;
+    const imageminMozjpeg = (await import('imagemin-mozjpeg')).default;
+    const imageminOptipng = (await import('imagemin-optipng')).default;
+    const imageminSvgo = (await import('imagemin-svgo')).default;
+
+    return gulp.src('./source/images/*', { encoding: false })
+        .pipe(imagemin([
+            imageminGifsicle({ interlaced: true }),
+            imageminMozjpeg({ quality: 75, progressive: true }),
+            imageminOptipng({ optimizationLevel: 5 }),
+            imageminSvgo({
+                plugins: [
+                    { name: 'removeViewBox', active: false },
+                    { name: 'cleanupIDs', active: false }
+                ]
+            })
+        ]))
         .pipe(gulp.dest('./build/images'));
 }
 
