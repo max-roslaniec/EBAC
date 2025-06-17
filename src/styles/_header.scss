@@ -1,0 +1,25 @@
+@use 'variables' as v;
+
+.header {
+  padding: 2px 0; /* Reduzido de 5px para 2px */
+  background-color: v.$cor-secundaria;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Adicionado padding lateral para manter o conteúdo interno */
+  }
+
+  &__logo {
+    max-width: 90px; /* Reduzido de 100px para 90px */
+    max-height: 90px; /* Reduzido de 100px para 90px */
+    width: 90px; /* Define a largura exata */
+    height: 90px; /* Define a altura exata */
+    object-fit: contain; /* Garante que a imagem mantenha proporções sem distorção */
+  }
+}

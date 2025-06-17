@@ -1,0 +1,28 @@
+@use 'variables' as v;
+
+.hero {
+  background-image: linear-gradient(rgba(19, 21, 32, 0.7), rgba(19, 21, 32, 1)), url('../images/hero_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 120px 0 120px 0; /* Mantido o padding vertical original */
+  text-align: center;
+  padding-top: 120px; /* Aumentado de 100px para 120px para compensar o header */
+
+  &__content {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+    color: v.$cor-texto-secundario;
+  }
+}
